@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c00425f9127e2f540ba7503a4bffe263, type: 3}
   m_Name: Arco pocho
   m_EditorClassIdentifier: 
-  itemName: Espada de madera
-  itemDescription: un palo de madera que me pienso que es una espada
-  itemPrice: -50
-  itemSprite: {fileID: 21300000, guid: 9c4b584fdcc16e84391e2a1f5235a9d3, type: 3}
+  itemName: arco pocho
+  itemDescription: un arco que me he encontrao en la feria de mi pueblo
+  itemPrice: 12
+  itemSprite: {fileID: 21300000, guid: 7764b2bf79a49894e8ea10f3d661a4ed, type: 3}

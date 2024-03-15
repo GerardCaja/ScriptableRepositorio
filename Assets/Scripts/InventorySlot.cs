@@ -15,13 +15,17 @@ public class InventorySlot : MonoBehaviour
     public Text inspectionDescription;
 
     public Button deleteButton;
+    public Button closeButton;
 
     public void InspectItem()
     {
-        if(slotItem != null)
+        if(slotItem != null && inspectionWindow.activeInHierarchy == false)
         {
-            inspectionImage.sprite = slotItem.weaponsSprite;
-            inspecionName.text = slotItem.weaponsName;
+            deleteButton.onClick.AddListener(RemoveItem);
+            closeButton.onClick.AddListener(CloseInspectionWindow);
+
+            inspectionImage.sprite = slotItem.itemSprite;
+            inspecionName.text = slotItem.itemName;
             inspectionPrice.text = slotItem.itemPrice.ToString();
             inspectionDescription.text = slotItem.itemDescription;
 
@@ -29,6 +33,29 @@ public class InventorySlot : MonoBehaviour
         }
     }
 
+
+    public void RemoveItem()
+    {
+        if(InventoryManager.instance.weapons[slotNumber]!= null)
+        {
+            InventoryManager.instance.weapons[slotNumber] = null;
+            InventoryManager.instance.weaponsNames[slotNumber].text = "Empty";
+            InventoryManager.instance.weaponsSprites[slotNumber].sprite = null;
+        }
+
+        slotItem = null;
+
+        deleteButton.onClick.RemoveListener(RemoveItem);
+
+        inspectionWindow.SetActive(false);
+    }
+
+    public void CloseInspectionWindow()
+    {
+        deleteButton.onClick.RemoveListener(RemoveItem);
+
+        inspectionWindow.SetActive(false);
+    }
 
     // Start is called before the first frame update
     void Start()
